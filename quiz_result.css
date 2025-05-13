@@ -1,0 +1,39 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 50px;
+    background-image: url("starry-night-sky-in-space.jpg")
+  }
+.box {
+    max-width: 400px;
+    background-color: #000000;
+    color: #cbe1ea;
+    font-family: 'Arial', sans-serif;
+    padding: 20px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    margin: auto;
+    text-align: center;
+  }
+
+  /* Navigation */
+  nav {
+    padding: 20px 40px;
+    }
+    
+    nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    gap: 30px;
+    }
+    
+    nav ul li a {
+    text-decoration: none;
+    color: #42cd2c;
+    font-weight: 500;
+    transition: color 0.3s;
+    }
+    
+    nav ul li a:hover {
+    color: #facc15; /* yellow-ish hover */
+    }

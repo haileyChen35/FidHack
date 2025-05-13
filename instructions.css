@@ -1,0 +1,80 @@
+.rectangle-btn {
+    position: relative;
+    padding: 15px 50px 15px 100px;
+    margin-top: 20px;
+    background-color: rgb(164, 222, 219);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+
+
+
+.rectangle-btn:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -25px;
+    width: 0;
+    height: 0;
+    border-left: 25px solid rgb(164, 222, 219);
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.rectangle-btn:hover {
+    background-color: rgb(164, 222, 219);
+}
+
+.rectangle-btn:hover:before {
+    border-left-color: rgb(164, 222, 219);
+}
+
+.rectangle-btn:active {
+    transform: scale(0.95);
+}
+
+.rectangle-btn:active:before {
+    right: -23px;
+}
+
+.instruction-box {
+    max-width: 500px;
+    background-color: rgba(0, 0, 0, 0);
+    color: #18a72d;
+    font-family: 'Arial', sans-serif;
+    padding: 20px;
+    border: 1px solid #00000000;
+    border-radius: 10px;
+    margin: auto;
+    text-align: left;
+  }
+
+    /* Navigation */
+    nav {
+    padding: 20px 40px;
+    }
+    
+    nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    gap: 30px;
+    }
+    
+    nav ul li a {
+    text-decoration: none;
+    color: #42cd2c;
+    font-weight: 500;
+    transition: color 0.3s;
+    }
+    
+    nav ul li a:hover {
+    color: #facc15; /* yellow-ish hover */
+    }

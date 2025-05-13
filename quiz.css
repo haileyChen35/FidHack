@@ -1,0 +1,73 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 50px;
+    background-image: url("starry-night-sky-in-space.jpg")
+  }
+   /* Navigation */
+   nav {
+    padding: 20px 40px;
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    gap: 30px;
+  }
+  
+  nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+  
+  nav ul li a:hover {
+    color: #facc15; /* yellow-ish hover */
+  }
+  
+  .box {
+    max-width: 400px;
+    background-color: #000000;
+    color: #cbe1ea;
+    font-family: 'Arial', sans-serif;
+    padding: 20px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    margin: auto;
+    text-align: center;
+  }
+
+  a:link, a:visited {
+    background-color: #000000;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+  }
+  
+  a:hover, a:active {
+    background-color: rgb(0, 157, 65);
+  }
+  .quiz-box {
+    max-width: 400px;
+    padding: 20px;
+    border: 2px solid #333;
+    border-radius: 10px;
+    margin: auto;
+  }
+  .question {
+    font-weight: bold;
+  }
+  .choices {
+    margin-top: 15px;
+  }
+  .choices label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  .result {
+    margin-top: 20px;
+    font-weight: bold;
+  }

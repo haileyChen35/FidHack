@@ -1,0 +1,141 @@
+<!-- Setup of the File -->
+ <!DOCTYPE html>
+<html lang="en">
+<!-- Connects the css file to the html file -->
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Quiz</title>
+  <link rel="stylesheet" href="quiz.css" />
+</head>
+<body>
+    <nav>
+        <ul>
+          <li><a href="./about.html">About</a></li>
+          <li><a href="./Instructions.html">Instruction</a></li>
+          <li><a href="./Resources.html">Resources</a></li>
+        </ul>
+      </nav>
+</main>
+<!-- Creates the first quiz question -->
+    <div class="quiz-box">
+            <div class="question">
+            Do you consider yourself a good public speaker?
+            </div>
+        <div class="choices">
+        <label><input type="radio" name="answer" value="Positive"> Yes, I am a demon at public speaking.</label>
+        <label><input type="radio" name="answer" value="Negative"> I'm okay... I guess.</label>
+        <label><input type="radio" name="answer" value="Negative"> I hate public speaking more than anything.</label>
+        <label><input type="radio" name="answer" value="Negative"> I have never done public speaking.</label>
+        </div>
+        <button onclick="checkAnswer1()">Submit</button>
+        <div class="result" id="result"></div>
+    </div>
+    <!-- checkAnswer1 function -->
+    <script>
+        function checkAnswer1() {
+            const choices = document.getElementsByName('answer');
+            let selectedValue = null;
+
+            for (const choice of choices) {
+            if (choice.checked) {
+                selectedValue = choice.value;
+                break;
+                }
+            }
+
+            const result = document.getElementById('result');
+            if (!selectedValue) {
+                result.textContent = "Please select an answer!";
+            } else if (selectedValue === "Positive") {
+                result.textContent = "Nice work! 🎉";
+                result.style.color = "green";
+            } else {
+                result.textContent = "Don't talk yourself down 😢 Everybody starts somewhere.";
+                result.style.color = "blue";
+            }
+        }
+    </script>
+    <!-- Creates the second quiz question -->
+    <div class="quiz-box">
+        <div class="question">
+            How comfortable are you networking?
+        </div>
+        <div class="choices">
+        <label><input type="radio" name="answer" value="Positive"> I talk to anyone and everyone!</label>
+        <label><input type="radio" name="answer" value="Negative"> I'm a little shy in public.</label>
+        <label><input type="radio" name="answer" value="Negative"> Talking to people is so nerdy and embarrassing.</label>
+        <label><input type="radio" name="answer" value="Negative"> I would rather cry.</label>
+        </div>
+        <button onclick="checkAnswer2()">Submit</button>
+        <div class="result" id="result2"></div>
+    </div>
+    <!-- checkAnswer2 function -->
+    <script>
+        function checkAnswer2() {
+            const choices = document.getElementsByName('answer');
+            let selectedValue = null;
+
+            for (const choice of choices) {
+            if (choice.checked) {
+                selectedValue = choice.value;
+                break;
+                }
+            }
+
+            const result2 = document.getElementById('result2');
+            if (!selectedValue) {
+                result2.textContent = "Please select an answer!";
+            } else if (selectedValue === "Positive") {
+                result2.textContent = "Nice work! 🎉";
+                result2.style.color = "green";
+            } else {
+                result2.textContent = "Don't talk yourself down 😢 Everybody starts somewhere.";
+                result2.style.color = "blue";
+            }
+        }
+    </script>
+    <!-- Creates the third quiz question -->
+    <div class="quiz-box">
+        <div class="question">
+            How positive do you describe yourself on your resume?
+        </div>
+        <div class="choices">
+        <label><input type="radio" name="answer" value="Positive"> I try to be honest about my strengths.</label>
+        <label><input type="radio" name="answer" value="Negative"> I brag so people know how hard I've worked.</label>
+        <label><input type="radio" name="answer" value="Negative"> I try to undersell myself so I don't seem arrogant.</label>
+        </div>
+        <button onclick="checkAnswer3()">Submit</button>
+        <div class="result" id="result3"></div>
+    </div>
+        <!-- checkAnswer3 function -->
+        <script>
+            function checkAnswer3() {
+                const choices = document.getElementsByName('answer');
+                let selectedValue = null;
+
+                for (const choice of choices) {
+                if (choice.checked) {
+                    selectedValue = choice.value;
+                    break;
+                    }
+                }
+
+                const result3 = document.getElementById('result3');
+                if (!selectedValue) {
+                    result3.textContent = "Please select an answer!";
+                } else if (selectedValue === "Positive") {
+                    result3.textContent = "Nice work! 🎉";
+                    result3.style.color = "green";
+                } else {
+                    result3.textContent = "Don't talk yourself down 😢 Everybody starts somewhere.";
+                    result3.style.color = "blue";
+                }
+            }
+        </script>
+        <!-- Connects to the quiz_result html file --> 
+        <div id="end_message" class="box">
+            <h2><a href="quiz_result.html">See your results &rArr;</a></h2>
+        </div>
+    </main>        
+</body>
+</html>

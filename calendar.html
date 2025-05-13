@@ -1,0 +1,281 @@
+<!-- Setup -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Rocket Confidence | Your Calendar</title>
+        <!-- FullCalendar CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <!-- GOOGLE FONT CSS -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <style>
+
+            .calendar-page{
+                display: flex;
+                justify-content: start;
+            }
+
+            #calendar {
+                max-width: 1000px;
+                margin: auto 10em;
+                padding: 20px;
+                background-color: aliceblue;
+                border-radius: 10px;
+                box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+            }
+
+            body {
+                margin: 0;
+                font-family: 'Segoe UI', sans-serif;
+                background-color: #f4cd92;
+                display: flex;
+                justify-content: start;
+                align-items: center;
+                height: 100vh;
+            }
+            .fc-event-time { display: none !important; }
+
+            /* Streak counter */
+            .streak-counter {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #3788d8;
+                color: white;
+                padding: 10px 15px;
+                border-radius: 20px;
+                font-weight: bold;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            }
+
+            /* Today's cell styling */
+            .fc-day-today {
+                background-color: rgba(55, 136, 216, 0.1) !important;
+                position: relative;
+            }
+            /* Checkmark styling */
+            .streak-check {
+                position: absolute;
+                top: 5px;
+                right: 5px;
+                color: #4CAF50;
+                font-size: 1.5em;
+                z-index: 2;
+            }
+
+            /* Full-cell pink cross styling */
+            .full-cell-cross {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .full-cell-cross i {
+                position: absolute;
+                color: #FF69B4; /* Pink color */
+                font-size: 4em; /* Larger size */
+                margin-top: 0.7em;
+                opacity: 0.3; /* Semi-transparent */
+                z-index: 1;
+            }
+
+            .full-cell-cross .fc-daygrid-day-number {
+                position: relative;
+                z-index: 2;
+                font-weight: bold;
+            }
+
+            /* Remove the green event background */
+            .fc-event {
+                background-color: transparent !important;
+                border: none !important;
+            }
+
+            .text-content{
+                font-family: "Noto Sans", sans-serif;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between; 
+            }
+
+            .text-content p {
+                flex-grow: 1;
+            }
+            .arrow-btn {
+            position: relative;
+            padding: 15px 50px 15px 100px;
+            background-color: #3788d8;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            outline: none;
+            transition: all 0.3s ease;
+            transform-origin: center;
+            
+            }
+
+        .arrow-btn:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: -25px;
+            width: 0;
+            height: 0;
+            border-left: 25px solid #3788d8;
+            border-top: 25px solid transparent;
+            border-bottom: 25px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .arrow-btn:hover {
+            background-color: #FF8C42;
+        }
+
+        .arrow-btn:hover:before {
+            border-left-color: #FF8C42;
+        }
+
+        .arrow-btn:active {
+            transform: scale(0.95);
+        }
+
+        .arrow-btn:active:before {
+            right: -23px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        </style>
+    </head>
+    <body>
+        <div class="calendar-page">
+            
+            
+            <div id="calendar"></div>
+
+            <table>
+                <div class="text-content">
+                    <h1>Introduction</h1>
+                    <p>This is our calendar</p>
+                    <a href="quiz.html">
+                        <button class="arrow-btn">Let's go!</button>
+                    </a>
+                </div>
+                <div class="streak-counter" id="streakCounter">
+                    <i class="fas fa-fire"></i> <span id="streakDays">1</span> day streak
+                </div>
+            </table>
+
+        </div>
+
+
+        <!-- FullCalendar JS -->
+        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var calendarEl = document.getElementById('calendar');
+                const visitedDays = JSON.parse(localStorage.getItem('visitedDays') || '[]');
+                // Get or initialize streak from localStorage
+                let streak = localStorage.getItem('streak') || 0;
+                const lastVisit = localStorage.getItem('lastVisit');
+                const today = new Date().toDateString();
+
+                if (!visitedDays.includes(today)) {
+                visitedDays.push(today);
+                localStorage.setItem('visitedDays', JSON.stringify(visitedDays));
+                }
+                
+                // Update streak logic (simplified version)
+                if (lastVisit !== today) {
+                    const yesterday = new Date();
+                    yesterday.setDate(yesterday.getDate() - 1);
+                    
+                    if (lastVisit === yesterday.toDateString()) {
+                        streak = parseInt(streak) + 1;
+                    } else {
+                        streak = 1; // Reset if not consecutive
+                    }
+                    
+                    localStorage.setItem('streak', streak);
+                    localStorage.setItem('lastVisit', today);
+                }
+
+                document.getElementById('streakDays').textContent = streak;
+
+
+                var calendar = new FullCalendar.Calendar(calendarEl, {
+                    initialView: 'dayGridMonth',
+                    initialDate: new Date(), // Ensure calendar opens on current month
+                    headerToolbar: {
+                        left: 'prev,next today',
+                        center: 'title',
+                        right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                    },
+                    dayCellContent: function(arg) {
+                        const cellDate = arg.date.toDateString();
+                        const wasVisited = visitedDays.includes(cellDate);
+                        
+                        // Only show checkmark if the user visited on this day
+                        if (wasVisited) {
+                            return {
+                                html: `<div class="full-cell-cross">${arg.dayNumberText}<i class="fas fa-times"></i></div>`
+                            };
+                        }
+                        return { html: arg.dayNumberText };
+                    },
+                    // events: [
+                    //     {
+                    //         title: '✓ Daily Check-in',
+                    //         start: new Date(), // Today
+                    //         color: '#4CAF50'
+                    //     }
+                    // ],
+                    editable: true, // Allow dragging events
+                    selectable: true, // Allow date selection
+                    nowIndicator: true, // Shows a marker for current time in week/day views
+                    dayHeaderClassNames: function(arg) {
+                        // Highlight today's column header in week view
+                        if (arg.date.toDateString() === new Date().toDateString()) {
+                            return ['fc-day-today-header'];
+                        }
+                        return [];
+                    }
+                });
+                
+                calendar.render();
+
+                const element = document.getElementById('calendar');
+
+                element.animate([
+                { opacity: 0, transform: 'translateY(20px)' },
+                { opacity: 1, transform: 'translateY(0)' }
+                ], {
+                duration: 1000,
+                easing: 'ease-out',
+                iterations: 1,
+                fill: 'forwards'
+                });
+                
+                // Programmatically scroll to today's date
+                setTimeout(function() {
+                    const todayElement = document.querySelector('.fc-day-today');
+                    if (todayElement) {
+                        todayElement.scrollIntoView({
+                            behavior: 'auto',
+                            block: 'center'
+                        });
+                    }
+                }, 100);
+            });
+        </script>
+    </body>
+</html>
