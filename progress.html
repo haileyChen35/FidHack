@@ -1,0 +1,154 @@
+<!-- iRocket Confidence | Progress Page
+Purpose: Shows user's point progress and unlocked badges as they complete daily challenges.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Document setup -->
+  <meta charset="UTF-8">
+  <title>iRocket Confidence | Progress</title>
+
+  <!-- Styles and fonts -->
+  <link rel="stylesheet" href="progress.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap">
+</head>
+
+<body>
+
+  <!-- Navigation bar -->
+  <nav>
+    <ul>
+      <li><a href="./index.html"><span class="emoji">&#127968;</span></a></li>
+          <div class="dropdown">
+          <li><button class="dropbtn"><a href="./about.html"><span class="emoji1">&#9432;</span></a></li></button>
+          <div class="dropdown-content">
+            <a href="./about.html">About</a>
+            <a href="./instructions.html">Instructions</a>
+            <a href="./resources.html">Resources</a>
+          </div>
+      </div>
+      <li><a href="./calendar.html"><span class="emoji">&#128197;</span></a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <!-- Progress content -->
+    <div class="box">
+      <h2>Your Progress</h2>
+      <p class="question">Complete a challenge each day to earn points and unlock badges.</p>
+
+      <!-- Progress bar -->
+      <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+      <p id="progressText">0 / 100 Points</p>
+
+      <!-- Rocket visual -->
+      <div class="rocket-container">
+        <div class="launch-track">
+          <div class="rocket" id="rocket">🚀</div>
+        </div>
+      </div>
+
+      <!-- Badge milestones -->
+      <div class="badges">
+      <div class="badge" id="badge25">Took Initiative</div>
+      <div class="badge" id="badge50">Built Momentum</div>
+      <div class="badge" id="badge75">Stepped Up</div>
+      <div class="badge" id="badge100">Ready to Launch</div>
+      
+    </div>
+
+      <!-- Feedback messages -->
+      <p id="dailyMessage" class="hidden-message">You completed the challenge for today — come back tomorrow!</p>
+      <p id="congratsMessage" class="hidden-message">You unlocked all badges for this month!</p>
+      
+      <!-- Demo challenge button -->
+      <button onclick="completeChallenge()">Complete a Challenge</button>
+    </div>
+
+  </main>
+
+  <!-- Progress logic -->
+  <script>
+    let currentPoints = 20;
+    const maxPoints = 100;
+    const pointsPerChallenge = 5;
+    let challengeCompletedToday = false;
+
+    function updateUI() {
+      const progress = (currentPoints / maxPoints) * 100;
+      document.getElementById("progressBar").style.width = progress + "%";
+      document.getElementById("progressText").textContent = `${currentPoints} / ${maxPoints} Points`;
+      document.getElementById("rocket").style.bottom = progress + "%";
+      checkBadges();
+    }
+
+    function completeChallenge() {
+      if (challengeCompletedToday || currentPoints >= maxPoints) return;
+      currentPoints += pointsPerChallenge;
+      if (currentPoints > maxPoints) 
+      {
+        currentPoints = maxPoints;
+      }
+        challengeCompletedToday = true;
+        updateUI();
+        document.getElementById("dailyMessage").classList.remove("hidden-message");
+
+        // Mark challenge as completed in localStorage
+        const today = new Date().toDateString();
+          const completedDays = JSON.parse(localStorage.getItem('completedDays') || '[]');
+          
+          if (!completedDays.includes(today)) {
+              completedDays.push(today);
+              localStorage.setItem('completedDays', JSON.stringify(completedDays));
+              
+              // Update streak
+              updateStreak();
+              
+              // Redirect to calendar after completion
+              
+                setTimeout(() => {
+                  window.location.href = 'calendar.html';
+                }, 1500);
+              
+          }
+      }
+    
+
+    function updateStreak() {
+        const today = new Date();
+        const yesterday = new Date(today);
+        yesterday.setDate(yesterday.getDate() - 1);
+        
+        const lastCompletion = localStorage.getItem('lastCompletion');
+        let streak = parseInt(localStorage.getItem('streak') || '0');
+        
+        if (!lastCompletion || new Date(lastCompletion).toDateString() === yesterday.toDateString()) {
+            streak += 1;
+        } else if (new Date(lastCompletion).toDateString() !== today.toDateString()) {
+            streak = 1; // Reset streak if not consecutive
+        }
+        
+        localStorage.setItem('streak', streak);
+        localStorage.setItem('lastCompletion', today.toString());
+    }
+
+    function checkBadges() {
+      if (currentPoints >= 25) document.getElementById("badge25").classList.add("unlocked");
+      if (currentPoints >= 50) document.getElementById("badge50").classList.add("unlocked");
+      if (currentPoints >= 75) document.getElementById("badge75").classList.add("unlocked");
+      if (currentPoints >= 100) {
+        document.getElementById("badge100").classList.add("unlocked");
+        document.getElementById("congratsMessage").classList.remove("hidden-message");
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", updateUI);
+  </script>
+
+</body>
+</html>

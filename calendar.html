@@ -15,284 +15,23 @@ Purpose: Displays an interactive calendar using FullCalendar that tracks user vi
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-        <!-- ButtonCSS -->
-        <nav>
-            <ul>
-                <li><a href="./index.html">Home</a></li>
-                <li><a href="./about.html">About</a></li>
-                <li><a href="./Resources.html">Resources</a></li>
-            </ul>
-        </nav>
-
-        <!-- Inline CSS Styling -->
-        <style>
-
-            .calendar-page{
-                display: contents;
-                justify-content: start;
-            }
-
-            #calendar {
-                max-width: 1000px;
-                margin: auto 10em;
-                padding: 20px;
-                background-color: aliceblue;
-                border-radius: 10px;
-                box-shadow: rgba(255, 255, 255, 0.1) 0px 4px 12px;
-            }
-
-            body {
-                margin: 0;
-                font-family: Helvetica, sans-serif;
-                background-color: #f4cd92;
-                display: flex;
-                justify-content: start;
-                align-items: center;
-                height: 100vh;
-            }
-            .fc-event-time { display: none !important; }
-
-            /* Streak counter */
-            .streak-counter {
-                position: fixed;
-                top: 20px;
-                right: 20px;
-                background: #3788d8;
-                color: white;
-                padding: 10px 15px;
-                border-radius: 20px;
-                font-weight: bold;
-                box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            }
-
-            /* Today's cell styling */
-            .fc-day-today {
-                background-color: rgba(55, 136, 216, 0.1) !important;
-                position: relative;
-            }
-            /* Checkmark styling */
-            .streak-check {
-                position: absolute;
-                top: 5px;
-                right: 5px;
-                color: #4CAF50;
-                font-size: 1.5em;
-                z-index: 2;
-            }
-
-            /* Full-cell pink cross styling */
-            .full-cell-cross {
-                position: relative;
-                width: 100%;
-                height: 100%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            .full-cell-cross i {
-                position: absolute;
-                color: #FF69B4; /* Pink color */
-                font-size: 4em; /* Larger size */
-                margin-top: 0.7em;
-                opacity: 0.3; /* Semi-transparent */
-                z-index: 1;
-            }
-
-            .full-cell-cross .fc-daygrid-day-number {
-                position: relative;
-                z-index: 2;
-                font-weight: bold;
-            }
-
-            /* Remove the green event background */
-            .fc-event {
-                background-color: transparent !important;
-                border: none !important;
-            }
-
-            .text-content{
-                font-family: Helvetica, sans-serif;
-                display: flex;
-                color: white;
-                flex-direction: column;
-                justify-content: left; 
-            }
-
-            .text-content p {
-                flex-grow: 1;
-            }
-            .arrow-btn {
-                position: relative;
-                padding: 15px 50px 15px 100px;
-                background-color: #3788d8;
-                color: white;
-                font-size: 18px;
-                font-weight: bold;
-                border: none;
-                cursor: pointer;
-                outline: none;
-                transition: all 0.3s ease;
-                transform-origin: center;
-            
-            }
-
-            .arrow-btn:before {
-                content: "";
-                position: absolute;
-                top: 0;
-                right: -25px;
-                width: 0;
-                height: 0;
-                border-left: 25px solid #3788d8;
-                border-top: 25px solid transparent;
-                border-bottom: 25px solid transparent;
-                transition: all 0.3s ease;
-            }
-
-            .arrow-btn:hover {
-                background-color: #FF8C42;
-            }
-
-            .arrow-btn:hover:before {
-                border-left-color: #FF8C42;
-            }
-
-            .arrow-btn:active {
-                transform: scale(0.95);
-            }
-
-            .arrow-btn:active:before {
-                right: -23px;
-            }
-
-            a {
-                text-decoration: none;
-            }
-
-                    /* Navigation */
-            nav {
-                padding: 20px 40px;
-            }
-    
-            nav ul {
-                list-style: none;
-                display: flex;
-                justify-content: flex-end;
-                gap: 30px;
-            }
-    
-            nav ul li a {
-                text-decoration: none;
-                color: #fff;
-                font-weight: 500;
-                transition: color 0.3s;
-            }
-    
-            nav ul li a:hover {
-                color: #facc15; /* yellow-ish hover */
-            }
-            * background effect */
-
-            * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            }
-
-            body {
-            min-height: 100vh;
-            background: linear-gradient(to bottom, #0b0b2b, #1b2735 70%, #090a0f);
-            /* overflow: hidden; */
-            }
-
-            .stars {
-            width: 1px;
-            height: 1px;
-            position: absolute;
-            background: white;
-            box-shadow: 2vw 5vh 2px white, 10vw 8vh 2px white, 15vw 15vh 1px white,
-                22vw 22vh 1px white, 28vw 12vh 2px white, 32vw 32vh 1px white,
-                38vw 18vh 2px white, 42vw 35vh 1px white, 48vw 25vh 2px white,
-                53vw 42vh 1px white, 58vw 15vh 2px white, 63vw 38vh 1px white,
-                68vw 28vh 2px white, 73vw 45vh 1px white, 78vw 32vh 2px white,
-                83vw 48vh 1px white, 88vw 20vh 2px white, 93vw 52vh 1px white,
-                98vw 35vh 2px white, 5vw 60vh 1px white, 12vw 65vh 2px white,
-                18vw 72vh 1px white, 25vw 78vh 2px white, 30vw 85vh 1px white,
-                35vw 68vh 2px white, 40vw 82vh 1px white, 45vw 92vh 2px white,
-                50vw 75vh 1px white, 55vw 88vh 2px white, 60vw 95vh 1px white,
-                65vw 72vh 2px white, 70vw 85vh 1px white, 75vw 78vh 2px white,
-                80vw 92vh 1px white, 85vw 82vh 2px white, 90vw 88vh 1px white,
-                95vw 75vh 2px white;
-            animation: twinkle 8s infinite linear;
-            }
-
-            .shooting-star {
-            position: absolute;
-            width: 100px;
-            height: 2px;
-            background: linear-gradient(-90deg, white, transparent);
-            animation: shoot 3s infinite ease-in;
-            }
-
-            .shooting-star:nth-child(1) {
-            top: 20%;
-            left: -100px;
-            animation-delay: 0s;
-            }
-
-            .shooting-star:nth-child(2) {
-            top: 35%;
-            left: -100px;
-            animation-delay: 1s;
-            }
-
-            .shooting-star:nth-child(3) {
-            top: 50%;
-            left: -100px;
-            animation-delay: 2s;
-            }
-
-            @keyframes twinkle {
-            0%,
-            100% {
-                opacity: 0.8;
-            }
-            50% {
-                opacity: 0.4;
-            }
-            }
-
-            @keyframes shoot {
-            0% {
-                transform: translateX(0) translateY(0) rotate(25deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateX(120vw) translateY(50vh) rotate(25deg);
-                opacity: 0;
-            }
-            }
-
-            /* Additional twinkling stars with different animation timing */
-            .stars::after {
-            content: "";
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            background: white;
-            box-shadow: 8vw 12vh 2px white, 16vw 18vh 1px white, 24vw 25vh 2px white,
-                33vw 15vh 1px white, 41vw 28vh 2px white, 49vw 35vh 1px white,
-                57vw 22vh 2px white, 65vw 42vh 1px white, 73vw 28vh 2px white,
-                81vw 48vh 1px white, 89vw 32vh 2px white, 97vw 45vh 1px white,
-                3vw 68vh 2px white, 11vw 75vh 1px white, 19vw 82vh 2px white,
-                27vw 88vh 1px white, 35vw 72vh 2px white, 43vw 85vh 1px white,
-                51vw 92vh 2px white, 59vw 78vh 1px white;
-            animation: twinkle 6s infinite linear reverse;
-            }  
-        </style>
     </head>
     <body>
+        <nav>
+            <ul>
+                <li><a href="./index.html"><span class="emoji">&#127968;</span></a></li>
+          <div class="dropdown">
+          <li><button class="dropbtn"><a href="./about.html"><span class="emoji1">&#9432;</span></a></li></button>
+          <div class="dropdown-content">
+            <a href="./about.html" class="about">About</a>
+            <a href="./instructions.html" class="instructions">Instructions</a>
+            <a href="./resources.html" class="resources">Resources</a>
+          </div>
+      </div>
+      <li><a href="./calendar.html"><span class="emoji">&#128197;</span></a></li>
+            </ul>
+        </nav>
+        
         <!-- Animated Background Effects -->
         <div class="stars"></div>
         <div class="shooting-star"></div>
@@ -310,8 +49,11 @@ Purpose: Displays an interactive calendar using FullCalendar that tracks user vi
             <table>
                 <div class="text-content">
                     <!-- Intro text -->
-                    <h1>Introduction</h1>
-                    <p>This is our calendar</p>
+                    <h1>This is <i>Your</i> Calendar</h1>
+                    <ul>
+                        <li>A green check means you completed today's task!</li>
+                        <li>A red X means you lost your streak.</li>
+                    </ul>
                     <!-- Link to challenge for the day -->
                     <a href="challenge.html">
                         <button class="arrow-btn">Let's go!</button>
@@ -332,30 +74,20 @@ Purpose: Displays an interactive calendar using FullCalendar that tracks user vi
             document.addEventListener('DOMContentLoaded', function() {
                 var calendarEl = document.getElementById('calendar');
                 const visitedDays = JSON.parse(localStorage.getItem('visitedDays') || '[]');
+                const completedDays = JSON.parse(localStorage.getItem('completedDays') || '[]');
+    
+                
                 // Get or initialize streak from localStorage
                 let streak = localStorage.getItem('streak') || 0;
                 const lastVisit = localStorage.getItem('lastVisit');
                 const today = new Date().toDateString();
+                
 
                 if (!visitedDays.includes(today)) {
                 visitedDays.push(today);
                 localStorage.setItem('visitedDays', JSON.stringify(visitedDays));
                 }
                 
-                // Update streak logic (simplified version)
-                if (lastVisit !== today) {
-                    const yesterday = new Date();
-                    yesterday.setDate(yesterday.getDate() - 1);
-                    
-                    if (lastVisit === yesterday.toDateString()) {
-                        streak = parseInt(streak) + 1;
-                    } else {
-                        streak = 1; // Reset if not consecutive
-                    }
-                    
-                    localStorage.setItem('streak', streak);
-                    localStorage.setItem('lastVisit', today);
-                }
 
                 document.getElementById('streakDays').textContent = streak;
 
@@ -371,22 +103,23 @@ Purpose: Displays an interactive calendar using FullCalendar that tracks user vi
                     dayCellContent: function(arg) {
                         const cellDate = arg.date.toDateString();
                         const wasVisited = visitedDays.includes(cellDate);
+                        const wasCompleted = completedDays.includes(cellDate);
+
                         
                         // Only show checkmark if the user visited on this day
-                        if (wasVisited) {
-                            return {
-                                html: `<div class="full-cell-cross">${arg.dayNumberText}<i class="fas fa-times"></i></div>`
-                            };
-                        }
+                        if (wasCompleted) {
+                                return {
+                                    html: `<div class="full-cell-check">${arg.dayNumberText}<i class="fas fa-check"></i></div>`
+                                };
+                            } else if (wasVisited) {
+                                return {
+                                    html: `<div class="full-cell-cross">${arg.dayNumberText}<i class="fas fa-times"></i></div>`
+                                };
+                            }
+
                         return { html: arg.dayNumberText };
                     },
-                    // events: [
-                    //     {
-                    //         title: '✓ Daily Check-in',
-                    //         start: new Date(), // Today
-                    //         color: '#4CAF50'
-                    //     }
-                    // ],
+                   
                     editable: true, // Allow dragging events
                     selectable: true, // Allow date selection
                     nowIndicator: true, // Shows a marker for current time in week/day views

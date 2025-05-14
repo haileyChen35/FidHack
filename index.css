@@ -28,16 +28,59 @@
     font-weight: 500;
     font-family: Helvetica, sans-serif;
     transition: color 0.3s;
+    z-index: 2
   }
   
   nav ul li a:hover {
     color: #facc15; /* yellow-ish hover */
   }
-  
+  /* Dropdown Button */
+.dropbtn {
+  background-color: transparent;
+  color: white;
+  padding: 0;
+  font-size: 16px;
+  border: none;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background-color: transparent;}
+
   /* Main intro section */
 main {
   display: block;
   justify-content: center;
+  z-index: -1;
   align-items: center;
   height: 80vh;
   text-align: center;
@@ -73,7 +116,8 @@ main {
   .arrow-btn {
     position: relative;
     padding: 15px 50px 15px 100px;
-    margin-top: 20px;
+    margin-top: 0.1px;
+    margin-bottom: 15px;
     background-color: #4CAF50;
     color: white;
     text-align: center;
@@ -108,11 +152,11 @@ main {
 }
 
 .arrow-btn:active {
-    transform: scale(0.95);
+  transform: scale(0.95);
 }
 
 .arrow-btn:active:before {
-    right: -23px;
+  right: -23px;
 }
 
 a {
@@ -224,7 +268,8 @@ body {
   box-shadow:0 0 .25em rgba(0,0,0,.25);
   box-sizing:border-box;
   left:50%;
-  padding:10vmin;
+  z-index: 0;
+  padding: 10vmin;
   position:fixed;
   text-align:center;
   top:50%;
@@ -242,4 +287,13 @@ h1 {
   100% {
     transform:translateX(25%);
   }
+}
+
+.emoji {
+  font-size: 40px; /* Change to desired size */
+}
+
+.emoji1 {
+  font-size: 36.5px; /* Change to desired size */
+  padding: 15px 50px 15px -10px;
 }
