@@ -6,8 +6,7 @@
   }
   
   body {
-    background-color: #000000;
-    color: #cbe1ea;
+    color: #343333;
     font-family: 'Arial', sans-serif;
   }
   
@@ -36,12 +35,12 @@
   
   /* Main intro section */
 main {
-  display: flex;
+  display: block;
   justify-content: center;
   align-items: center;
   height: 80vh;
   text-align: center;
-  display: flex;
+  display: center;
   justify-content: flex-end;
 }
 
@@ -49,7 +48,7 @@ main {
   font-size: 5rem;
   font-weight: 750;
   line-height: 1.2;
-  text-shadow: 0px 0px 0px #000000;
+  text-shadow: 0px 0px 0px #464444;
 }
 
 .intro .dot {
@@ -63,7 +62,7 @@ main {
 .intro p {
   margin-top: 20px;
   font-size: 2rem;
-  color: #ccc;
+  color: #787676;
   line-height: 1.5;
 }
 
@@ -76,6 +75,7 @@ main {
     margin-top: 20px;
     background-color: #4CAF50;
     color: white;
+    text-align: center;
     font-size: 18px;
     font-weight: bold;
     border: none;
@@ -116,4 +116,63 @@ main {
 
 a {
     text-decoration: none;
+}
+
+
+
+/* background effect */
+
+html {
+  height:100%;
+}
+
+body {
+  margin:0;
+}
+
+.bg {
+  animation:slide 3s ease-in-out infinite alternate;
+  background-image: linear-gradient(-60deg, rgb(248, 164, 224) 50%, rgb(255, 251, 0) 50%);
+  bottom:0;
+  left:-50%;
+  opacity:.5;
+  position:fixed;
+  right:-50%;
+  top:0;
+  z-index:-1;
+}
+
+.bg2 {
+  animation-direction:alternate-reverse;
+  animation-duration:4s;
+}
+
+.bg3 {
+  animation-duration:5s;
+}
+
+.content {
+  background-color:rgba(255,255,255,.8);
+  border-radius:.25em;
+  box-shadow:0 0 .25em rgba(0,0,0,.25);
+  box-sizing:border-box;
+  left:50%;
+  padding:10vmin;
+  position:fixed;
+  text-align:center;
+  top:50%;
+  transform:translate(-50%, -50%);
+}
+
+h1 {
+  font-family:monospace;
+}
+
+@keyframes slide {
+  0% {
+    transform:translateX(-25%);
+  }
+  100% {
+    transform:translateX(25%);
+  }
 }

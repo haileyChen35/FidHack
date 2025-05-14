@@ -3,60 +3,58 @@ body {
     margin: 50px;
     background-image: url("starry-night-sky-in-space.jpg")
   }
-   /* Navigation */
-   nav {
-    padding: 20px 40px;
-  }
-  
-  nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: flex-end;
-    gap: 30px;
-  }
-  
-  nav ul li a {
-    text-decoration: none;
-    color: #fff;
-    font-weight: 500;
-    transition: color 0.3s;
-  }
-  
-  nav ul li a:hover {
-    color: #facc15; /* yellow-ish hover */
-  }
+    /* Navigation */
+    nav {
+      padding: 20px 40px;
+    }
+    
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: flex-end;
+      gap: 30px;
+    }
+    
+    nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    
+    nav ul li a:hover {
+      color: #facc15; /* yellow-ish hover */
+    }
   
   .box {
     max-width: 400px;
-    background-color: #000000;
+    background-color: #ffffff;
     color: #cbe1ea;
     font-family: 'Arial', sans-serif;
     padding: 20px;
-    border: 1px solid #000;
+    border: 1px solid #f9f8f8;
     border-radius: 10px;
     margin: auto;
     text-align: center;
   }
 
-  a:link, a:visited {
+  .box a{
+    text-decoration: none;
+  }
+
+  /* a:link, a:visited {
     background-color: #000000;
     color: white;
     padding: 14px 25px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-  }
+  } */
   
-  a:hover, a:active {
-    background-color: rgb(0, 157, 65);
+  .box a:hover, a:active {
+    background-color: pink;
   }
-  .quiz-box {
-    max-width: 400px;
-    padding: 20px;
-    border: 2px solid #333;
-    border-radius: 10px;
-    margin: auto;
-  }
+
   .question {
     font-weight: bold;
   }
@@ -71,3 +69,102 @@ body {
     margin-top: 20px;
     font-weight: bold;
   }
+
+
+  /* background effect */
+
+html {
+  height:100%;
+}
+
+body {
+  margin:0;
+}
+
+.bg {
+  animation:slide 3s ease-in-out infinite alternate;
+  background-image: linear-gradient(-60deg, rgb(248, 164, 224) 50%, rgb(255, 251, 0) 50%);
+  bottom:0;
+  left:-50%;
+  opacity:.5;
+  position:fixed;
+  right:-50%;
+  top:0;
+  z-index:-1;
+}
+
+.bg2 {
+  animation-direction:alternate-reverse;
+  animation-duration:4s;
+}
+
+.bg3 {
+  animation-duration:5s;
+}
+
+.content {
+ 
+  position: relative;
+  left: auto;
+  top: auto;
+  bottom: auto;
+  transform: none;
+  width: 100%;
+  max-width: 700px;
+  margin: auto;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, .8);
+  border-radius: .25em;
+  box-shadow: 0 0 .25em rgba(0, 0, 0, .25);
+}
+
+h1 {
+  font-family:monospace;
+}
+
+@keyframes slide {
+  0% {
+    transform:translateX(-25%);
+  }
+  100% {
+    transform:translateX(25%);
+  }
+}
+
+
+
+.news-section {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  overflow: hidden;
+  width: 600px;
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  align-items: center;
+}
+
+button{
+  height: 30px;
+  width: 70px;
+  background-color: pink;
+  border-radius: 5px;
+  border-width: 0cap;
+  color: white;
+  cursor: pointer;
+}
