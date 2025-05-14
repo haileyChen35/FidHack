@@ -29,6 +29,7 @@ body {
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     overflow: hidden;
     width: 600px;
+    justify-items: center;
     transition: transform 0.3s ease;
   }
   
@@ -41,7 +42,19 @@ body {
     height: auto;
     display: block;
   }
-  
+  .past img {
+    width: 100%;
+    height: auto;
+    display: block;
+    opacity: 0.5;
+  }
+
+  .past img:hover {
+    width: 100%;
+    height: auto;
+    display: block;
+    opacity: 1;
+  }
   .card h3 {
     font-size: 18px;
     padding: 16px 16px 4px;
@@ -86,6 +99,7 @@ body {
     text-decoration: none;
     color: #fff;
     font-weight: 500;
+    font-family: Helvetica, sans-serif;
     transition: color 0.3s;
   }
   
@@ -134,7 +148,7 @@ body {
     position: absolute;
     width: 100px;
     height: 2px;
-    background: linear-gradient(90deg, white, transparent);
+    background: linear-gradient(-90deg, white, transparent);
     animation: shoot 3s infinite ease-in;
   }
   

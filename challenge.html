@@ -1,35 +1,44 @@
+<!-- 
+  iRocket Confidence | Challenge Page
+  Purpose: Displays the challenge, along with a section for reviewing past challenges. 
+-->
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Page metadata and title -->
   <meta charset="UTF-8">
   <title>Challenge</title>
+  <!-- Link to external CSS for styling the Challenge page -->
   <link rel="stylesheet" href="challenge.css">
 </head>
 <body>
-
-    <div class="stars"></div>
+  <!-- Animated Background Effects -->
+  <div class="stars"></div>
   <div class="shooting-star"></div>
   <div class="shooting-star"></div>
   <div class="shooting-star"></div>
   <div class="shooting-star"></div>
   <div class="shooting-star"></div>
 
+  <!-- Main navigation bar to other sections -->
   <nav>
     <ul>
+      <li><a href="./index.html">Home</a></li>
       <li><a href="./about.html">About</a></li>
-      <li><a href="./resources.html">Resources</a></li>
       <li><a href="./calendar.html">Your Calendar</a></li>
+      <li><a href="./resources.html">Resources</a></li>
     </ul>
   </nav>
 
+  <!-- Section displaying the current daily challenge -->
   <section class="news-section">
     <h2>Today's challenge is...</h2>
     <div class="card-container">
       <div class="card">
-        <img src="./images/coverLetter.png" alt="Post 1">
-        <p>Work on your cover letter for a job you really want.</p>
-      </div>
+        <a href="https://hbr.org/2022/05/how-to-write-a-cover-letter-that-sounds-like-you-and-gets-noticed" target="_blank"><img src="https://contenthub-static.grammarly.com/blog/wp-content/uploads/2023/03/Cover-Letter-Format_800x943%402x.png" alt="Post 1" style="width:500px;height:600px"></a>
+        <p>Work on your cover letter for a job you really want.</p></div>
+    </div>
       <!-- <div class="card">
         <img src="https://via.placeholder.com/300x180?text=Image+2" alt="Post 2">
         <h3>Post 2 Headline</h3>
@@ -43,13 +52,21 @@
     </div>  
   </section>
 
+  <!-- Section showing archived or previous challenges -->
   <section class="news-section">
-    <h2>The past challenges</h2>
+    <h2>Past Challenges:</h2>
     <div class="card-container">
       <div class="card">
-        <img src="./images/coverLetter.png" alt="Post 1">
-        <p>Work on your cover letter for a job you really want.</p>
+        <div class="past">
+          <a href="https://www.linkedin.com/mynetwork/invite-connect/connections/" target="_blank"><img src="https://www.premiumbeat.com/blog/wp-content/uploads/2013/01/Networking.jpg" alt="Post 1"></a>
+          <p>Reach out to 10 people in your industry on LinkedIn.</p></div>
       </div>
+      <div class="card-container">
+        <div class="card">
+          <div class="past">
+            <a href="https://onlinenotepad.org/notepad" target="blank"><img src="https://i0.wp.com/dayoneapp.com/wp-content/uploads/2023/04/journal-writing-steps.jpg" alt="Post 1"></a>
+            <p>Journal for ten minutes using this reflection prompt: "What is one weakness you are proud of? What is one weakness you will improve upon?"</p></div>
+        </div>
       <!-- <div class="card">
         <img src="https://via.placeholder.com/300x180?text=Image+2" alt="Post 2">
         <h3>Post 2 Headline</h3>

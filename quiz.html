@@ -1,13 +1,19 @@
-<!-- Setup of the File -->
+<!-- 
+  iRocket Confidence | Quiz Page
+  Purpose: Presents a quiz that assesses a user's confidence in areas like public speaking, networking, and self-presentation.
+-->
+
  <!DOCTYPE html>
 <html lang="en">
-<!-- Connects the css file to the html file -->
 <head>
+  <!-- Page title and character encoding -->
   <meta charset="UTF-8">
   <title>Simple Quiz</title>
+  <!-- Link to external stylesheet for this page's styling -->
   <link rel="stylesheet" href="quiz.css" />
 </head>
 <body>
+    <!-- Navigation bar with links to other pages -->
     <nav>
         <ul>
           <li><a href="./about.html">About</a></li>
@@ -16,29 +22,38 @@
         </ul>
       </nav>
 </main>
-<!-- Creates the first quiz question -->
-<div class="bg"></div>
-<div class="bg bg2"></div>
-<div class="bg bg3"></div>
+<!-- Animated Background Effects -->
+<div class="stars"></div>
+<div class="shooting-star"></div>
+<div class="shooting-star"></div>
+<div class="shooting-star"></div>
+<div class="shooting-star"></div>
+<div class="shooting-star"></div>
+<!-- Main container for quiz content -->
 <div class="content">
+    <!-- Question 1 -->
     <section class="news-section">
     <div class="card-container">
         <div class="card">
+            <!-- Question prompt -->
             <div class="question">
             Do you consider yourself a good public speaker?
             </div>
+        <!-- Answer choices -->
         <div class="choices">
         <label><input type="radio" name="answer" value="Positive"> Yes, I am a demon at public speaking.</label>
         <label><input type="radio" name="answer" value="Negative"> I'm okay... I guess.</label>
         <label><input type="radio" name="answer" value="Negative"> I hate public speaking more than anything.</label>
         <label><input type="radio" name="answer" value="Negative"> I have never done public speaking.</label>
         </div>
+        <!-- Submit button -->
         <button onclick="checkAnswer1()">Submit</button>
+        <!-- Feedback message container -->
         <div class="result" id="result"></div>
     </div>
     </div>
     </section>
-    <!-- checkAnswer1 function -->
+    <!-- Script to evaluate Question 1 Response -->
     <script>
         function checkAnswer1() {
             const choices = document.getElementsByName('answer');
@@ -63,24 +78,28 @@
             }
         }
     </script>
-    <!-- Creates the second quiz question -->
+    <!-- Question 2 -->
     <section class="news-section">
         <div class="card-container">
             <div class="card">
+        <!-- Question prompt -->        
         <div class="question">
             How comfortable are you networking?
         </div>
+        <!-- Answer choices -->
         <div class="choices">
         <label><input type="radio" name="answer" value="Positive"> I talk to anyone and everyone!</label>
         <label><input type="radio" name="answer" value="Negative"> I'm a little shy in public.</label>
         <label><input type="radio" name="answer" value="Negative"> Talking to people is so nerdy and embarrassing.</label>
         <label><input type="radio" name="answer" value="Negative"> I would rather cry.</label>
         </div>
+        <!-- Submit button -->
         <button onclick="checkAnswer2()">Submit</button>
+        <!-- Feedback message container -->
         <div class="result" id="result2"></div>
     </div>
     </div>
-    <!-- checkAnswer2 function -->
+    <!-- Script to evaluate Question 2 Response -->
     <script>
         function checkAnswer2() {
             const choices = document.getElementsByName('answer');
@@ -105,23 +124,27 @@
             }
         }
     </script>
-    <!-- Creates the third quiz question -->
+    <!-- Question 3 -->
     <section class="news-section">
         <div class="card-container">
             <div class="card">
+        <!-- Question prompt -->
         <div class="question">
             How positive do you describe yourself on your resume?
         </div>
+        <!-- Answer choices -->
         <div class="choices">
         <label><input type="radio" name="answer" value="Positive"> I try to be honest about my strengths.</label>
         <label><input type="radio" name="answer" value="Negative"> I brag so people know how hard I've worked.</label>
         <label><input type="radio" name="answer" value="Negative"> I try to undersell myself so I don't seem arrogant.</label>
         </div>
+        <!-- Submit button -->
         <button onclick="checkAnswer3()">Submit</button>
+        <!-- Feedback message container -->
         <div class="result" id="result3"></div>
     </div>
     </div>
-        <!-- checkAnswer3 function -->
+        <!-- Script to evaluate Question 3 Response -->
         <script>
             function checkAnswer3() {
                 const choices = document.getElementsByName('answer');
@@ -146,14 +169,13 @@
                 }
             }
         </script>
-        <!-- Connects to the quiz_result html file --> 
+        <!-- Link to calendar page --> 
          <br>
          <br>
          <br>
         <div id="end_message" class="box">
             <h2><a href="quiz_result.html">See your results &rArr;</a></h2>
         </div>
-
     </div>
     </main>    
     <br>   

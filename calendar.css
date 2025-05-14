@@ -14,22 +14,9 @@ nav {
     text-decoration: none;
     color: #42cd2c;
     font-weight: 500;
-    font-family: Helvetica, sans-serif;
     transition: color 0.3s;
     }
     
     nav ul li a:hover {
     color: #facc15; /* yellow-ish hover */
     }
-
-    .resources-box {
-        max-width: 500px;
-        background-color: rgba(0, 0, 0, 0);
-        color: #18a72d;
-        font-family: 'Arial', sans-serif;
-        padding: 20px;
-        border: 1px solid #00000000;
-        border-radius: 10px;
-        margin: auto;
-        text-align: left;
-      }
