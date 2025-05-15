@@ -269,6 +269,17 @@ button{
   cursor: pointer;
 }
 
+button1 {
+  height: 50px;
+  width: 350px;
+  font-size: 20px;
+  background-color: transparent;
+  border-radius: 5px;
+  border-width: 0.2cap;
+  color: rgb(101, 0, 189);
+  cursor: pointer;
+}
+
 button:hover{
   background-color: rgb(0, 151, 25);
 }
